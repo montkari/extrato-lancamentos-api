@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class ControleLancamentoDto {
     
-    private LancamentoContaCorrenteDto lancamentoContaCorrente;   
+    private LancamentoContaCorrenteDto lancamentoContaCorrenteCliente;   
     private LocalDate dataEfetivaLancamento;   
     private LocalDate dataLancamentoContaCorrenteCliente;   
     private Long numeroEvento;    
