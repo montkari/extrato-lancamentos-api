@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.extrato.lancamentos.client.ControleLancamentoClient;
 import com.extrato.lancamentos.domain.dto.ControleLancamentoDto;
-import com.extrato.lancamentos.domain.dto.LancamentoContaLegadoDto;
+import com.extrato.lancamentos.service.LancamentosService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -20,13 +19,12 @@ import io.swagger.annotations.ApiOperation;
 public class LancamentosController {
     
     @Autowired
-    private ControleLancamentoClient controleLegado;
+    private LancamentosService lancamentosService;
     
     @GetMapping
     @ApiOperation(value = "Retorna a lista de lançamentos")
-    public ResponseEntity<List<ControleLancamentoDto>> buscarTodos() throws IOException {
-        LancamentoContaLegadoDto legadoDto = controleLegado.leituraJsonLegado();        
-        return ResponseEntity.ok(legadoDto.getListaControleLancamento());
+    public ResponseEntity<List<ControleLancamentoDto>> buscarTodos() throws IOException {       
+        return ResponseEntity.ok(lancamentosService.buscarTodos());
     }
 
 }
